@@ -1,0 +1,29 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header, footer {
+    background-color: #f2f2f2;
+    padding: 1em;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+main {
+    flex-grow: 1;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main h1 {
+    text-align: center;
+}

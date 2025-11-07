@@ -1,0 +1,50 @@
+/* signup.css - Styles for the registration page */
+
+main.registration-main {
+    align-items: stretch; /* Override the center alignment */
+}
+
+form {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-group {
+    width: 48%;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    width: 100%;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+}
+
+.optional {
+    color: red;
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 30px;
+}
+
+.password-container i {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}

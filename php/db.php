@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "dental_clinic";
+$dbname = "ccmart_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

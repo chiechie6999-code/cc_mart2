@@ -2,26 +2,26 @@ function fetchQuestions() {
     const username = document.getElementById('username').value;
     const questionsContainer = document.getElementById('questions-container');
 
-    if (username.trim() === '') {
-        questionsContainer.style.display = 'none';
-        return;
-    }
-
-    fetch('php/get_questions.php?username=' + encodeURIComponent(username))
+    if (username.length > 0) {
+        fetch('get_questions.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'username=' + encodeURIComponent(username)
+        })
         .then(response => response.json())
         .then(data => {
-            if (data.error) {
-                alert(data.error);
-                questionsContainer.style.display = 'none';
-            } else {
-                document.getElementById('question_1_label').textContent = data.auth_question_1;
-                document.getElementById('question_2_label').textContent = data.auth_question_2;
-                document.getElementById('question_3_label').textContent = data.auth_question_3;
+            if (data) {
+                document.getElementById('question_1_label').textContent = data.question1;
+                document.getElementById('question_2_label').textContent = data.question2;
+                document.getElementById('question_3_label').textContent = data.question3;
                 questionsContainer.style.display = 'block';
+            } else {
+                questionsContainer.style.display = 'none';
             }
-        })
-        .catch(error => {
-            console.error('Error fetching questions:', error);
-            questionsContainer.style.display = 'none';
         });
+    } else {
+        questionsContainer.style.display = 'none';
+    }
 }

@@ -10,7 +10,9 @@ unset($_SESSION['errors'], $_SESSION['old_data']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/homepage.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -20,9 +22,9 @@ unset($_SESSION['errors'], $_SESSION['old_data']);
             <a href="login.php">Log-in</a>
         </nav>
     </header>
-    <main>
-        <h1>CabilicDental</h1>
-        <form action="php/register.php" method="post" name="myform" onsubmit="return validateform()">
+    <main class="registration-main">
+        <h1>ccmart</h1>
+        <form action="register_process.php" method="post" name="myform" onsubmit="return validateform()">
             <div class="form-group">
                 <label for="id_number">ID Number*</label>
                 <input type="text" id="id_number" name="id_number" placeholder="xxxx-xxxx" required value="<?= htmlspecialchars($old_data['id_number'] ?? '') ?>">
@@ -30,37 +32,40 @@ unset($_SESSION['errors'], $_SESSION['old_data']);
             </div>
             <div class="form-group">
                 <label for="first_name">First Name*</label>
-                <input type="text" id="first_name" name="first_name" required>
-                <div id="first_name-error" class="error-message"></div>
+                <input type="text" id="first_name" name="first_name" required value="<?= htmlspecialchars($old_data['first_name'] ?? '') ?>">
+                <div id="first_name-error" class="error-message"><?= htmlspecialchars($errors['first_name'] ?? '') ?></div>
             </div>
             <div class="form-group">
                 <label for="middle_name">Middle Name <span class="optional">optional</span></label>
-                <input type="text" id="middle_name" name="middle_name">
+                <input type="text" id="middle_name" name="middle_name" value="<?= htmlspecialchars($old_data['middle_name'] ?? '') ?>">
             </div>
             <div class="form-group">
                 <label for="family_name">Family Name*</label>
-                <input type="text" id="family_name" name="family_name" required>
+                <input type="text" id="family_name" name="family_name" required value="<?= htmlspecialchars($old_data['family_name'] ?? '') ?>">
+                <div id="family_name-error" class="error-message"><?= htmlspecialchars($errors['family_name'] ?? '') ?></div>
             </div>
             <div class="form-group">
                 <label for="name_extension">Name Extension <span class="optional">optional</span></label>
-                <input type="text" id="name_extension" name="name_extension">
+                <input type="text" id="name_extension" name="name_extension" value="<?= htmlspecialchars($old_data['name_extension'] ?? '') ?>">
             </div>
             <div class="form-group">
                 <label for="birthdate">Birthdate*</label>
-                <input type="date" id="birthdate" name="birthdate" required>
+                <input type="date" id="birthdate" name="birthdate" required value="<?= htmlspecialchars($old_data['birthdate'] ?? '') ?>">
+                <div id="birthdate-error" class="error-message"><?= htmlspecialchars($errors['birthdate'] ?? '') ?></div>
             </div>
             <div class="form-group">
                 <label for="age">Age</label>
-                <input type="number" id="age" name="age" readonly>
+                <input type="number" id="age" name="age" readonly value="<?= htmlspecialchars($old_data['age'] ?? '') ?>">
             </div>
             <div class="form-group">
                 <label for="email">Email*</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required value="<?= htmlspecialchars($old_data['email'] ?? '') ?>">
+                <div id="email-error" class="error-message"><?= htmlspecialchars($errors['email'] ?? '') ?></div>
             </div>
             <div class="form-group">
                 <label for="username">Username*</label>
-                <input type="text" id="username" name="username" required>
-                <div id="username-error" class="error-message"></div>
+                <input type="text" id="username" name="username" required value="<?= htmlspecialchars($old_data['username'] ?? '') ?>">
+                <div id="username-error" class="error-message"><?= htmlspecialchars($errors['username'] ?? '') ?></div>
             </div>
             <div class="form-group">
                 <label for="password">Password*</label>
@@ -68,7 +73,7 @@ unset($_SESSION['errors'], $_SESSION['old_data']);
                     <input type="password" id="password" name="password" required>
                     <i class="fa fa-eye" id="toggle-password"></i>
                 </div>
-                <span id="password-strength" class="error-message"></span>
+                <span id="password-strength" class="error-message"><?= htmlspecialchars($errors['password'] ?? '') ?></span>
             </div>
             <div class="form-group">
                 <label for="re_enter_password">Re-enter Password*</label>
@@ -79,27 +84,27 @@ unset($_SESSION['errors'], $_SESSION['old_data']);
             </div>
             <div class="form-group">
                 <label for="purok_street">Purok/Street*</label>
-                <input type="text" id="purok_street" name="purok_street" required>
+                <input type="text" id="purok_street" name="purok_street" required value="<?= htmlspecialchars($old_data['purok_street'] ?? '') ?>">
             </div>
             <div class="form-group">
                 <label for="barangay">Barangay*</label>
-                <input type="text" id="barangay" name="barangay" required>
+                <input type="text" id="barangay" name="barangay" required value="<?= htmlspecialchars($old_data['barangay'] ?? '') ?>">
             </div>
             <div class="form-group">
                 <label for="municipal_city">Municipal/City*</label>
-                <input type="text" id="municipal_city" name="municipal_city" required>
+                <input type="text" id="municipal_city" name="municipal_city" required value="<?= htmlspecialchars($old_data['municipal_city'] ?? '') ?>">
             </div>
             <div class="form-group">
                 <label for="province">Province*</label>
-                <input type="text" id="province" name="province" required>
+                <input type="text" id="province" name="province" required value="<?= htmlspecialchars($old_data['province'] ?? '') ?>">
             </div>
             <div class="form-group">
                 <label for="country">Country*</label>
-                <input type="text" id="country" name="country" required>
+                <input type="text" id="country" name="country" required value="<?= htmlspecialchars($old_data['country'] ?? '') ?>">
             </div>
             <div class="form-group">
                 <label for="zip_code">Zip Code*</label>
-                <input type="text" id="zip_code" name="zip_code" required>
+                <input type="text" id="zip_code" name="zip_code" required value="<?= htmlspecialchars($old_data['zip_code'] ?? '') ?>">
             </div>
             <div class="form-group full-width">
                 <label for="auth_question_1">Authentication Question 1*</label>
@@ -130,7 +135,7 @@ unset($_SESSION['errors'], $_SESSION['old_data']);
                 </select>
                 <label for="auth_answer_3">Answer 3*</label>
                 <input type="password" id="auth_answer_3" name="auth_answer_3" required>
-                <div id="security-questions-error" class="error-message"></div>
+                <div id="security-questions-error" class="error-message"><?= htmlspecialchars($errors['auth_questions'] ?? '') ?></div>
             </div>
             <div class="form-group full-width">
                 <button type="submit">Register</button>
@@ -138,8 +143,8 @@ unset($_SESSION['errors'], $_SESSION['old_data']);
         </form>
     </main>
     <footer>
-        <p>&copy; 2024 CabilicDental. All rights reserved.</p>
+        <p>&copy; 2024 ccmart. All rights reserved.</p>
     </footer>
-    <script src="js/registration.js"></script>
+    <script src="../js/registration.js"></script>
 </body>
 </html>

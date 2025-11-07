@@ -1,21 +1,19 @@
 <?php
-include 'db.php';
-header('Content-Type: application/json');
+require 'db.php';
 
-$username = $_GET['username'] ?? '';
+if (isset($_POST['username'])) {
+    $username = $_POST['username'];
+    $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->store_result();
 
-if (empty($username)) {
-    echo json_encode(['exists' => false]);
-    exit();
+    if ($stmt->num_rows > 0) {
+        echo "exists";
+    } else {
+        echo "available";
+    }
+    $stmt->close();
 }
-
-$stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
-
-echo json_encode(['exists' => $result->num_rows > 0]);
-
-$stmt->close();
 $conn->close();
 ?>

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot Password</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/homepage.css">
+    <link rel="stylesheet" href="../css/navbar.css">
 </head>
 <body>
     <header>
@@ -14,8 +15,8 @@
         </nav>
     </header>
     <main>
-        <h1>CabilicDental</h1>
-        <form action="php/reset_password.php" method="post" name="resetform">
+        <h1>ccmart</h1>
+        <form action="reset_password_process.php" method="post" name="resetform">
             <label for="username">Username*</label>
             <input type="text" id="username" name="username" required onchange="fetchQuestions()">
 
@@ -37,8 +38,8 @@
         </form>
     </main>
     <footer>
-        <p>&copy; 2024 CabilicDental. All rights reserved.</p>
+        <p>&copy; 2024 ccmart. All rights reserved.</p>
     </footer>
-    <script src="js/forgot_password.js"></script>
+    <script src="../js/forgot_password.js"></script>
 </body>
 </html>
